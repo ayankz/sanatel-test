@@ -1,1 +1,207 @@
-/* You can add global styles to this file, and also import other style files */
+@use "./styles/variables";
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: "Montserrat", sans-serif;
+}
+.layout {
+  background: var(--bg-primary);
+  height: 100vh;
+  padding: 32px 72px;
+}
+.main {
+  background: var(--bg-container);
+  padding: 30px 0;
+  border-radius: 16px;
+}
+.container {
+  padding: 0 30px;
+}
+.flex {
+  display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.basis-30 {
+  flex-basis: 30%;
+}
+.content {
+  flex-basis: 70%;
+  padding: 0 30px 15px 15px;
+}
+.gap-1 {
+  gap: 16px;
+}
+.gap-2 {
+  gap: 32px;
+}
+.mb-2 {
+  margin-bottom: 16px;
+}
+.mt-2 {
+  margin-top: 16px;
+}
+.w-full {
+  width: 100%;
+}
+.center {
+  align-items: center;
+  justify-content: center;
+}
+.align-center {
+  align-items: center;
+}
+.grow-1 {
+  flex-grow: 1;
+}
+.link {
+  font-size: 16px;
+  line-height: 24px;
+  cursor: pointer;
+  color: var(--white);
+  &:hover {
+    color: var(--text-white);
+  }
+}
+.active {
+  color: red;
+}
+
+.btn {
+  padding: 10px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+  background: var(--text-violet);
+  border: none;
+  color: var(--text-white);
+  &:hover {
+    background: var(--text-vilet__hover);
+  }
+}
+.divider {
+  border-right: 1px solid var(--text-white);
+}
+input {
+  padding: 7px 14px;
+  outline: none;
+  width: 100%;
+  color: var(--text-white);
+  border-radius: 5px;
+  background: transparent;
+  border: 1px solid var(--border-input);
+  height: 50px;
+}
+label {
+  color: var(--text-primary);
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+.title {
+  margin-top: 12px;
+  font-size: 22px;
+  letter-spacing: 1.5px;
+  color: var(--text-white);
+}
+.overlay {
+  background: var(--bg-wrapper);
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.6;
+  z-index: 10;
+}
+
+.modal-container {
+  max-width: 360px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  background: var(--bg-container);
+  height: 100%;
+  z-index: 20;
+  .modal-header {
+    padding: 10px 15px;
+    background-color: var(--bg-primary-light);
+    color: var(--text-white);
+    font-size: 12px;
+    app-icon {
+      cursor: pointer;
+    }
+    strong {
+      color: var(--text-green);
+    }
+  }
+  .modal-content {
+    padding: 20px;
+  }
+}
+.list-item {
+  color: var(--text-white);
+  font-size: 14px;
+  span {
+  }
+  app-icon {
+    cursor: pointer;
+    visibility: hidden;
+  }
+  .custom-checkbox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 16px;
+
+    input {
+      display: none;
+    }
+
+    .checkmark {
+      width: 18px;
+      height: 18px;
+      border-radius: 3px;
+      background-color: transparent;
+      border: 1.5px solid #404656;
+      position: relative;
+      margin-right: 8px;
+      transition: background-color 0.2s, border-color 0.2s;
+    }
+
+    input:checked + .checkmark {
+      background-color: #6200ea;
+      border-color: #6200ea;
+      color: white;
+    }
+
+    .checkmark::after {
+      content: "";
+      position: absolute;
+      left: 3px;
+      display: none;
+      width: 8px;
+      height: 4px;
+      border-left: 2px solid white;
+      border-bottom: 2px solid white;
+      top: 3px;
+      transform: rotate(-45deg);
+    }
+    input:checked + .checkmark::after {
+      display: block;
+    }
+  }
+  &:hover {
+    app-icon {
+      visibility: visible;
+    }
+  }
+}

@@ -1,0 +1,60 @@
+<div class="overlay"></div>
+<div class="flex flex-col modal-container">
+  <div class="flex justify-between modal-header">
+    <ng-container *ngIf="mode$ | async as mode">
+      <ng-container *ngIf="mode === 'edit'; else createMode">
+        <ng-container *ngIf="selectedBook$ | async as book">
+          <span
+            >Редактирование книги <br />
+            <strong>{{ book.title }}</strong></span
+          >
+        </ng-container>
+      </ng-container>
+    </ng-container>
+    <ng-template #createMode>
+      <span>Добавление книги</span>
+    </ng-template>
+    <app-icon name="close" (click)="closeModal()"></app-icon>
+  </div>
+  <div class="flex flex-col modal-content">
+    <form
+      class="flex flex-col gap-2"
+      [formGroup]="bookForm"
+      (ngSubmit)="submitBook()"
+    >
+      <div class="flex flex-col">
+        <label>Название</label>
+        <input
+          type="text"
+          formControlName="title"
+          placeholder="Введите название книги"
+        />
+      </div>
+      <div class="flex flex-col">
+        <label>Автор</label>
+        <input
+          type="text"
+          formControlName="author"
+          placeholder="Введите имя автора"
+        />
+      </div>
+      <div class="flex flex-col">
+        <label>Год издания</label>
+        <input
+          type="text"
+          formControlName="year"
+          placeholder="Введите год издания"
+        />
+      </div>
+      <div class="flex flex-col">
+        <label>Количество страниц</label>
+        <input
+          type="text"
+          formControlName="pages"
+          placeholder="Введите количество страниц"
+        />
+      </div>
+      <app-button [title]="'Сохранить'" type="submit"></app-button>
+    </form>
+  </div>
+</div>

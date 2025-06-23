@@ -1,0 +1,11 @@
+<div class="container divider">
+    <div class="flex flex-col gap-1">
+        <app-button [title]="'Добавить книгу'" (click)="openModal()"></app-button>
+        <ng-container *ngFor="let filter of filters">
+            <div class="flex gap-1">
+                <app-icon [name]="filter.iconName"></app-icon>
+                <span class="link" (click)="onChange(filter.title)">{{filter.title}}</span>
+            </div>
+        </ng-container>
+    </div>
+</div>

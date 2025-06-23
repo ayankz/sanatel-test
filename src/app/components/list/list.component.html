@@ -1,0 +1,30 @@
+<div class="flex flex-col mt-2 gap-1">
+  <div
+    class="flex list-item gap-2 align-center"
+    *ngFor="let book of books$ | async"
+    [style.textDecoration]="book.isRemoved ? 'line-through' : 'none'"
+  >
+    <label class="custom-checkbox" *ngIf="!book.isRemoved">
+      <input
+        (change)="finishBook($event, book)"
+        type="checkbox"
+        value="true"
+        [checked]="book.isFinished"
+      />
+      <span class="checkmark"></span>
+    </label>
+    <span [ngClass]="{ 'grow-1': !book.isRemoved }"
+      >{{ book.title }} — {{ book.author }}</span
+    >
+    <app-icon
+      *ngIf="!book.isRemoved"
+      name="edit"
+      (click)="onEdit(book)"
+    ></app-icon>
+    <app-icon
+      *ngIf="!book.isRemoved"
+      name="remove-red"
+      (click)="onDelete(book)"
+    ></app-icon>
+  </div>
+</div>

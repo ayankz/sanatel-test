@@ -1,0 +1,9 @@
+<div class="flex">
+  <app-sidebar></app-sidebar>
+  <div class="content flex flex-col">
+    <app-search></app-search>
+    <app-title></app-title>
+    <app-list></app-list>
+  </div>
+</div>
+<app-modal-page *ngIf="isOpen$ | async"></app-modal-page>
